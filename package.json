@@ -2,12 +2,30 @@
   "name": "spline-research",
   "version": "0.1.0",
   "description": "A community-driven repository of independent research and analysis on the internals of the Spline platform. This project contains observations, notes, diagrams, tools, and re-implementations made from scratch—**no proprietary Spline code or assets** are included.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "spline-convert": "./dist/cli/convert.js",
+    "spline-inspect": "./dist/cli/inspect.js"
   },
+  "directories": {
+    "doc": "docs",
+    "lib": "src"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start:convert": "ts-node src/cli/convert.ts",
+    "start:inspect": "ts-node src/cli/inspect.ts",
+    "cli:convert": "node dist/cli/convert.js",
+    "cli:inspect": "node dist/cli/inspect.js",
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified yet\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -20,6 +38,14 @@
   },
   "homepage": "https://github.com/mateoltd/spline-research#readme",
   "dependencies": {
-    "msgpack-lite": "^0.1.26"
+    "@msgpack/msgpack": "^3.0.0-beta2",
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/three": "^0.160.0",
+    "eslint": "^8.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.3.0"
   }
 }
