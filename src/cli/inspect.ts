@@ -6,6 +6,8 @@ import { inspectSplineFile } from '../inspect/index';
 
 // Default input splinecode file if none is provided
 const DEFAULT_INPUT_FILE = 'scene.splinecode';
+const REPORT_FILENAME = 'spline_insight_report.json';
+const TRANSLATION_FILENAME = 'spline_translation.json';
 
 async function main() {
     const inputFile = process.argv[2] || DEFAULT_INPUT_FILE;
@@ -17,22 +19,29 @@ async function main() {
     const outputDir = path.join(baseOutputDir, timestamp);
     fs.mkdirSync(outputDir, { recursive: true });
 
-    const outputFile = 'spline_insight_report.json';
-    const outputPath = path.join(outputDir, outputFile);
+    // Define paths for both output files
+    const reportPath = path.join(outputDir, REPORT_FILENAME);
+    const translationPath = path.join(outputDir, TRANSLATION_FILENAME);
 
     console.log(`Starting Spline inspection...`);
     console.log(`  Input:  ${inputPath}`);
-    console.log(`  Output: ${outputPath}`);
+    console.log(`  Outputs in: ${outputDir}`);
+    // console.log(`    Report:      ${reportPath}`); // Keep logs cleaner
+    // console.log(`    Translation: ${translationPath}`);
 
     try {
-        await inspectSplineFile(inputPath, outputPath);
+        // Pass both paths to the inspect function
+        await inspectSplineFile(inputPath, reportPath, translationPath);
+        console.log(`Inspection complete.`);
     } catch (error) {
+        // Errors during inspection (like decoding) are caught here
         console.error("\nInspection failed:", error);
         process.exit(1);
     }
 }
 
 main().catch(err => {
-    console.error("Unexpected error in CLI:", err);
+    // Catch unexpected errors in the CLI runner itself
+    console.error("Unexpected error running inspect CLI:", err);
     process.exit(1);
 }); 
