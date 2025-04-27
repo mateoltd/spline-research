@@ -1,0 +1,9 @@
+node_modules/
+*.splinecode
+*.splinecode.zip
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+
