@@ -33,7 +33,7 @@ A community-driven repository of independent research and analysis on the intern
    We believe our reverse-engineering falls under fair-use and interoperability exceptions, but users must confirm compliance with local laws and Spline’s Terms of Service before using or redistributing any material.
 
 -  **No Warranty**  
-   This project is provided “as is,” with no guarantees of fitness, accuracy or non-infringement. Use at your own risk.
+   This project is provided “as is”, with no guarantees of fitness, accuracy or non-infringement. Use at your own risk.
 
 ---
 
@@ -87,15 +87,36 @@ npm install
 
 ## Usage
 
-Convert a `.splinecode` file to a Three.js scene:
+### 1. Build the TypeScript project
 
 ```bash
-node convert.js path/to/scene.splinecode
+npm run build
 ```
 
-The output will be generated in the `/output` directory.
+### 2. Convert a `.splinecode` file to a Three.js scene
 
-Open `index.html` in your browser to view the scene.
+```bash
+npm run cli:convert -- path/to/scene.splinecode
+```
+- The output will be generated as `src/generated/generatedScene.js`.
+- You can import this file in your Three.js project or further process it as needed.
+
+### 3. Inspect a `.splinecode` file for analysis
+
+```bash
+npm run cli:inspect -- path/to/scene.splinecode
+```
+- The output report will be generated as `src/generated/spline_insight_report.json`.
+- This JSON contains detailed statistics and insights about the file's structure and contents.
+
+#### Development (run directly with ts-node)
+
+You can also run the tools without building:
+
+```bash
+npm run start:convert -- path/to/scene.splinecode
+npm run start:inspect -- path/to/scene.splinecode
+```
 
 ---
 
