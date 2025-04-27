@@ -1,0 +1,25 @@
+{
+  "name": "spline-research",
+  "version": "0.1.0",
+  "description": "A community-driven repository of independent research and analysis on the internals of the Spline platform. This project contains observations, notes, diagrams, tools, and re-implementations made from scratch—**no proprietary Spline code or assets** are included.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateoltd/spline-research.git"
+  },
+  "author": "mateoltd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mateoltd/spline-research/issues"
+  },
+  "homepage": "https://github.com/mateoltd/spline-research#readme",
+  "dependencies": {
+    "msgpack-lite": "^0.1.26"
+  }
+}
